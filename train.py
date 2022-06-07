@@ -51,8 +51,9 @@ train_data = [X_tr_array, label]
 (X_train, y_train) = (train_data[0],train_data[1])
 train_set = np.zeros((num_samples, img_depth, img_cols, img_rows, 3))
 for h in range(num_samples):
-  train_set = np.array(train_set).mean(axis=0)
-  train_set[h][:][:][:][:]=X_train[h,:,:,:]
+  tmpArr = np.array(train_set)
+  X_train = tmpArr[h,:]
+  # train_set[h][:][:][:][:]=X_train[h,:,:,:]
 
 print(train_set.shape,'train sample')
 
