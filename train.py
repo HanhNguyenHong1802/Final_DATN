@@ -46,6 +46,7 @@ label[600:900] = 2
 label[900:1199] = 3
 label[1199:1499] = 4
 label[1499:1799] = 5
+label[1800:2100] = 6
 img_depth = 16
 train_data = [X_tr_array, label]
 (X_train, y_train) = (train_data[0],train_data[1])
@@ -133,4 +134,4 @@ plots=ModelData.plots(hist)
 from sklearn.metrics import confusion_matrix
 met = confusion_matrix(np.argmax(y_val_new,axis =1), np.argmax(model1.predict(X_val_new),axis =1))
 print(met)
-confusion_matrix_plot=ModelData.confusion_matrix_plot(met, classes=['Thumb Down', 'Thumb Up', 'Drumming Fingers', 'Sliding Two Fingers Right', 'Sliding Two Fingers Left','No Gesture'])
+confusion_matrix_plot=ModelData.confusion_matrix_plot(met, classes=['Thumb Down', 'Thumb Up', 'Drumming Fingers', 'Sliding Two Fingers Right', 'Sliding Two Fingers Left','Shaking Hand'])

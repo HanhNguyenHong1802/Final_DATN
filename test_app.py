@@ -73,10 +73,10 @@ while(1):
         max = np.max((result_1+result_2)/2, axis = 1)
         print(classes[int(num[0])])
         input=[]
-        real_index = controll_commands.index_threshhold(max, int(num[0]),pre)
-        instruction = controll_commands.controll_PC(real_index)
+        real_index = control_commands.index_threshhold(max, int(num[0]),pre)
+        instruction = control_commands.controll_PC(real_index)
         pre = int(num[0])
-        controll_commands.puttext_on(max, real_index, classes, frame, font)
+        control_commands.puttext_on(max, real_index, classes, frame, font)
         cv2.putText(frame, instruction, (450, 50), font, 0.7, (0, 255, 0), 2, 1)
         
     if not quietMode:

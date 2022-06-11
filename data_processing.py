@@ -44,6 +44,7 @@ class DataLoader():
     load_data("training_samples/Drumming Fingers", X_tr, img_rows, img_cols)
     load_data("training_samples/Sliding Two Fingers Right", X_tr, img_rows, img_cols)
     load_data("training_samples/Sliding Two Fingers Left", X_tr, img_rows, img_cols)
-    load_data("training_samples/No gesture", X_tr, img_rows, img_cols)
+    # load_data("training_samples/No gesture", X_tr, img_rows, img_cols)
+    load_data("training_samples/Shaking Hand", X_tr, img_rows, img_cols)
     return X_tr
 
