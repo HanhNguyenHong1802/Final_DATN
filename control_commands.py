@@ -24,20 +24,20 @@ def index_threshhold(conf, index,pre):
   elif index == 2 :
     #print(2)
     print(conf[0])
-    if conf[0] >0.85:
+    if conf[0] >0.75:
         
         return(index)
     else:
         return(5)
   elif index==3:
     print(conf[0])
-    if conf[0] >0.95:
+    if conf[0] >0.75:
       return(index)
     else:
       return(5)
   elif index ==4:
     print(conf[0])
-    if conf[0] >0.96:
+    if conf[0] >0.76:
       return(index)
     else:
       return(5)
