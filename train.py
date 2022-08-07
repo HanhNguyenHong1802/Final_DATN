@@ -29,9 +29,9 @@ from data_processing import DataLoader
 from plots_traindata import ModelData
 
 # uncomment the wanted model to train 
-#from CNN3D10 import ModelLoader
-#from CNN3D_LRN import ModelLoader
-#from CNN3D_3lstm import ModelLoader
+# from CNN3D10 import ModelLoader
+from CNN3D_LRN import ModelLoader
+# from CNN3D_3lstm import ModelLoader
 
 # image specification
 img_rows,img_cols=100, 100 
@@ -81,13 +81,13 @@ lr_reducer = ReduceLROnPlateau(monitor='val_loss', factor=0.05,
                                 cooldown=0, patience=10, min_lr=0.005/(2^4),verbose=1)
 
 #call the model  note when using CNN3D10 archeticture romeove weight_decay parameter from function call
-# model_intialize=ModelLoader(img_rows,img_cols,model_version,patch_size,nb_classes,weight_decay)
-# model=model_intialize.model
+model_intialize=ModelLoader(img_rows,img_cols,model_version,patch_size,nb_classes,weight_decay)
+model=model_intialize.model
 #########################################
 
 # used to use resnet +lstm architecture
 from resnet3d_LSTM import Resnet3DBuilder
-model = Resnet3DBuilder.build_resnet_50((16, 100, 100, 3), 6)
+# model = Resnet3DBuilder.build_resnet_50((16, 100, 100, 3), 6)
 model.compile(optimizer='Adam',
               loss='categorical_crossentropy',
               metrics=['acc'])
@@ -96,7 +96,7 @@ model.compile(optimizer='Adam',
 import os
 save_dir = os.path.join(os.getcwd(),'saved_model')
 print(os.getcwd())
-model_name = "build_resnet_50"+model_version
+model_name = "lrn"+model_version
 if not os.path.isdir(save_dir):
     os.makedirs(save_dir)
 model_path = os.path.join(save_dir, model_name)
@@ -116,7 +116,7 @@ hist = model.fit(
     )
 
 from keras.models import Model, load_model
-model1_name = "build_resnet_50"+model_version
+model1_name = "lrn"+model_version
 model1_path = os.path.join(save_dir, model1_name)
 model1 = load_model(model1_path)
 

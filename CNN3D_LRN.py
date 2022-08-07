@@ -1,14 +1,20 @@
+from operator import mod
+
 import keras
-from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Activation, Flatten, Reshape
-from keras.layers.convolutional import Conv3D, MaxPooling3D,Conv2D,AveragePooling2D,AveragePooling3D 
-from keras.layers import Dense, GlobalAveragePooling3D,GlobalAveragePooling2D,BatchNormalization
-from keras.callbacks import EarlyStopping, ModelCheckpoint, LearningRateScheduler,ReduceLROnPlateau
-from keras.optimizers import SGD, Adadelta,Adam
-from keras.utils import np_utils, generic_utils
-from keras.layers.normalization import BatchNormalization
+from keras.callbacks import (EarlyStopping, LearningRateScheduler,
+                             ModelCheckpoint, ReduceLROnPlateau)
+from keras.layers import (BatchNormalization, Dense, GlobalAveragePooling2D,
+                          GlobalAveragePooling3D)
+from keras.layers.convolutional import (AveragePooling2D, AveragePooling3D,
+                                        Conv2D, Conv3D, MaxPooling3D)
 from keras.layers.convolutional_recurrent import ConvLSTM2D
+from keras.layers.core import Activation, Dense, Dropout, Flatten, Reshape
+from tensorflow.keras.layers import BatchNormalization
+from keras.models import Sequential
+from tensorflow.keras.optimizers import Adadelta
+from keras.preprocessing.image import ImageDataGenerator
+from keras.utils import generic_utils, np_utils
+
 
 class ModelLoader():
 
@@ -70,6 +76,7 @@ class ModelLoader():
         optimizer =  Adadelta()
         model.compile(loss='categorical_crossentropy', 
               optimizer=optimizer,metrics=['acc'])
+        model.summary()
         return model
     
     def v1(self):
@@ -106,5 +113,6 @@ class ModelLoader():
         optimizer =  Adadelta()
         model.compile(loss='categorical_crossentropy', 
               optimizer=optimizer,metrics=['acc'])
+        model.summary()
         return model
    
